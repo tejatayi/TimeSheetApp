@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -22,6 +23,11 @@ export default function App() {
           <Stack.Screen
             name="LoginPage"
             component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignupPage"
+            component={SignupPage}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

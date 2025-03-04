@@ -1,12 +1,34 @@
-import { TextInput, View, Text, StyleSheet } from "react-native";
+import {
+  TextInput,
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+import { SignupPage } from "./SignupPage";
 
 export default function LoginPage({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.name}>
-        This page is working, make sure to do the remaining stuff **"Bitch"**!
-      </Text>
       <TextInput placeholder="User Email" style={styles.input} />
+      <TextInput
+        placeholder="Password"
+        secureTextEntry={true}
+        style={styles.input}
+      />
+
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Signin</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("SignupPage")}
+        >
+          <Text style={styles.buttonText}>SignUp</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -14,21 +36,38 @@ export default function LoginPage({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#060202",
+    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "black",
   },
-  name: {
-    color: "white", // Make text visible on dark background
-    fontSize: 18,
-    marginBottom: 20,
-  },
+
   input: {
     width: 250,
     height: 40,
     borderWidth: 1,
-    borderColor: "white",
+    borderColor: "black",
+    backgroundColor: "#ff1f1f",
     paddingHorizontal: 10,
-    color: "white", // Ensure text is visible in input field
+    borderRadius: 8,
+    marginBottom: 10,
+    color: "black", // Ensure text is visible in input field
+  },
+  buttonsContainer: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "black",
+  },
+  button: {
+    borderRadius: 18,
+    padding: 2,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  buttonText: {
+    color: "white",
   },
 });
