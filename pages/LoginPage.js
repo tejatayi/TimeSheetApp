@@ -5,41 +5,42 @@ import {
   StyleSheet,
   Button,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import { SignupPage } from "./SignupPage";
+import StripedBackground from "./Stripedbackgroundsvg";
 
 export default function LoginPage({ navigation }) {
   return (
+  
+    
     <View style={styles.container}>
-      <TextInput placeholder="User Email" style={styles.input} />
-      <TextInput
-        placeholder="Password"
-        secureTextEntry={true}
-        style={styles.input}
-      />
+      <StripedBackground stripeWidth={45}></StripedBackground>
+      <View style={styles.container}>
+        <TextInput placeholder="User Id" style={styles.input} />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry={true}
+          style={styles.input}
+        />
 
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Signin</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("SignupPage")}
-        >
-          <Text style={styles.buttonText}>SignUp</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Signin</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "black",
+    
   },
 
   input: {
