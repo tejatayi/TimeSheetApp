@@ -10,7 +10,7 @@ import {
 export default function SignupPage({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.tex}>this is SignUp page</Text>
+      <Text style={styles.tex}>KFC TIMESHEETS</Text>
     </View>
   );
 }
