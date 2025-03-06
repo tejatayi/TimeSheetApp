@@ -9,8 +9,24 @@ import {
 } from "react-native";
 import { SignupPage } from "./SignupPage";
 import StripedBackground from "./Stripedbackgroundsvg";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 export default function LoginPage({ navigation }) {
+
+  const [email,setID]=useState("");
+  const [password,setpassword]=useState("");
+const signingin=async()=>{
+  try{
+    const userCredential= await signInWithEmailAndPassword(auth, email, password);
+    console.log("sucessful");
+    
+  }
+  catch(error){
+console.error("failed",error.message);
+  }
+};
+
   return (
     <View style={styles.MainContainer}>
       <StripedBackground stripeWidth={90}></StripedBackground>
@@ -19,15 +35,17 @@ export default function LoginPage({ navigation }) {
       </View>
       <View style={styles.FormContainer}>
       
-        <TextInput placeholder="User Id" style={styles.input} />
+        <TextInput placeholder="User Id" style={styles.input} 
+        onChange={setID}/>
         <TextInput
           placeholder="Password"
           secureTextEntry={true}
           style={styles.input}
+          onChange={setpassword}
         />
 
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={signingin}>
             <Text style={styles.buttonText}>Signin</Text>
           </TouchableOpacity>
         </View>
@@ -35,6 +53,7 @@ export default function LoginPage({ navigation }) {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   intro_container:{
