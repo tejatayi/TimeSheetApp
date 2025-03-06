@@ -12,11 +12,13 @@ import StripedBackground from "./Stripedbackgroundsvg";
 
 export default function LoginPage({ navigation }) {
   return (
-  
-    
-    <View style={styles.container}>
-      <StripedBackground stripeWidth={45}></StripedBackground>
-      <View style={styles.container}>
+    <View style={styles.MainContainer}>
+      <StripedBackground stripeWidth={90}></StripedBackground>
+      <View style={styles.intro_container}>
+      <Text style={styles.introduction}>Welcome to Timesheets KFC Porirua</Text>
+      </View>
+      <View style={styles.FormContainer}>
+      
         <TextInput placeholder="User Id" style={styles.input} />
         <TextInput
           placeholder="Password"
@@ -35,8 +37,29 @@ export default function LoginPage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  intro_container:{
+  paddingBottom:20
   
-  container: {
+  },
+  MainContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    
+  },
+  FormContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    
+  },
+  introduction:{
+    border:"black",
+    textAlign:"center"
+
+  },
+  
+  FormContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
