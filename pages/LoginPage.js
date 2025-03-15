@@ -13,30 +13,35 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
 export default function LoginPage({ navigation }) {
-
-  const [email,setID]=useState("");
-  const [password,setpassword]=useState("");
-const signingin=async()=>{
-  try{
-    const userCredential= await signInWithEmailAndPassword(auth, email, password);
-    console.log("sucessful");
-    
-  }
-  catch(error){
-console.error("failed",error.message);
-  }
-};
+  const [email, setID] = useState("");
+  const [password, setpassword] = useState("");
+  const signingin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("sucessful");
+    } catch (error) {
+      console.error("failed", error.message);
+    }
+  };
 
   return (
     <View style={styles.MainContainer}>
       <StripedBackground stripeWidth={90}></StripedBackground>
       <View style={styles.intro_container}>
-      <Text style={styles.introduction}>Welcome to Timesheets KFC Porirua</Text>
+        <Text style={styles.introduction}>
+          Welcome to Timesheets KFC Porirua
+        </Text>
       </View>
       <View style={styles.FormContainer}>
-      
-        <TextInput placeholder="User Id" style={styles.input} 
-        onChange={setID}/>
+        <TextInput
+          placeholder="User Id"
+          style={styles.input}
+          onChange={setID}
+        />
         <TextInput
           placeholder="Password"
           secureTextEntry={true}
@@ -49,40 +54,43 @@ console.error("failed",error.message);
             <Text style={styles.buttonText}>Signin</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.signupContainer}>
+          <Text>NewUser ?</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("SignupPage")}
+          >
+            <Text style={styles.buttonText}>SignUp</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
 }
 
-
 const styles = StyleSheet.create({
-  intro_container:{
-  paddingBottom:20
-  
+  intro_container: {
+    paddingBottom: 20,
   },
   MainContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    
   },
   FormContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    
   },
-  introduction:{
-    border:"black",
-    textAlign:"center"
+  introduction: {
+    border: "black",
+    textAlign: "center",
+  },
 
-  },
-  
   FormContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    
   },
 
   input: {
@@ -112,5 +120,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+  },
+  signupContainer: {
+    flexDirection: "row",
   },
 });
