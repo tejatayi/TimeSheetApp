@@ -28,13 +28,13 @@ export default function LoginPage({ navigation }) {
         <TextInput
           placeholder="User Id"
           style={styles.input}
-          onChange={setID}
+          onChangeText={setID}
         />
         <TextInput
           placeholder="Password"
           secureTextEntry={true}
           style={styles.input}
-          onChange={setpassword}
+          onChangeText={setpassword}
         />
 
         <View style={styles.buttonsContainer}>
