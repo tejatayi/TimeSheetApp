@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useState } from "react";
+import { SignUp } from "./FirebaseAuth";
 
 export default function SignupPage({ navigation }) {
   const [email, setEmail] = useState("");
@@ -47,7 +48,10 @@ export default function SignupPage({ navigation }) {
         autoCorrect={false}
       ></TextInput>
 
-      <TouchableOpacity style={styles.signupButton}>
+      <TouchableOpacity
+        style={styles.signupButton}
+        onPress={() => SignUp(email, password)}
+      >
         <Text style={styles.buttonText}>SignUp</Text>
       </TouchableOpacity>
     </View>

@@ -1,34 +1,65 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  getAuth,
+} from "firebase/auth";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyB5ffDC5-6rve-jEPX9ovGUaipeXDtRKak",
-  authDomain: "kfcporiruatimesheets.firebaseapp.com",
+  apiKey: "AIzaSyCuPIRZbE4wb9W7qpj_LmgL8sLG4-fyras",
+  authDomain: "kfc-timesheet.firebaseapp.com",
   // databaseURL: 'https://project-id.firebaseio.com',
-  projectId: "kfcporiruatimesheets",
+  projectId: "kfc-timesheet",
   //storageBucket: 'project-id.appspot.com',
-  messagingSenderId: "25806599294",
-  // appId: '1:25806599294:android:7e3ebdba210ed42920d42f',
-  //measurementId: 'G-measurement-id',
+  messagingSenderId: "1014715830809",
+  appId: "1:1014715830809:web:7d654b5af250ef7b25d088",
+  measurementId: "G-15BH9D9Y32",
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
 
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+// signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed in
+//     const user = userCredential.user;
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//   });
+
+// createUserWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     const user = userCredential.user;
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//   });
+
+export async function SignIn(email, password) {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+  } catch (error) {
+    console.error("Failed SignIn", error.message);
+  }
+}
+
+export async function SignUp(email, password) {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+  } catch (error) {
+    console.error("Failed Creating User", error.message);
+  }
+}

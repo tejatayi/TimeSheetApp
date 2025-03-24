@@ -11,22 +11,10 @@ import { SignupPage } from "./SignupPage";
 import StripedBackground from "./Stripedbackgroundsvg";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-
+import { SignIn } from "./FirebaseAuth";
 export default function LoginPage({ navigation }) {
   const [email, setID] = useState("");
   const [password, setpassword] = useState("");
-  const signingin = async () => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log("sucessful");
-    } catch (error) {
-      console.error("failed", error.message);
-    }
-  };
 
   return (
     <View style={styles.MainContainer}>
@@ -50,7 +38,10 @@ export default function LoginPage({ navigation }) {
         />
 
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.button} onPress={signingin}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => SignIn(email, password)}
+          >
             <Text style={styles.buttonText}>Signin</Text>
           </TouchableOpacity>
         </View>
