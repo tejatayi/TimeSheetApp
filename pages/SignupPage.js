@@ -11,6 +11,16 @@ import { SignUp } from "./FirebaseAuth";
 export default function SignupPage({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+  const [fistname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [employeeid, setEmployeeid] = useState("");
+  const userData = {
+    email: email,
+    firstName: fistname, // Consider renaming 'fistname' to 'firstName'
+    lastName: lastname,
+    employeeId: employeeid,
+    role: "USER",
+  };
   const signUp = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -29,7 +39,16 @@ export default function SignupPage({ navigation }) {
         <View style={styles.stripe} />
         <View style={styles.stripe} />
       </View>
-      <TextInput style={styles.inputFields} placeholder="Name"></TextInput>
+      <TextInput
+        style={styles.inputFields}
+        placeholder="FirstName"
+        onChangeText={setFirstname}
+      ></TextInput>
+      <TextInput
+        style={styles.inputFields}
+        placeholder="Lastname"
+        onChangeText={setLastname}
+      ></TextInput>
       <TextInput
         style={styles.inputFields}
         placeholder="Email"
@@ -38,6 +57,7 @@ export default function SignupPage({ navigation }) {
       <TextInput
         style={styles.inputFields}
         placeholder="Employee ID"
+        onChangeText={setEmployeeid}
       ></TextInput>
       <TextInput
         style={styles.inputFields}
@@ -50,7 +70,7 @@ export default function SignupPage({ navigation }) {
 
       <TouchableOpacity
         style={styles.signupButton}
-        onPress={() => SignUp(email, password)}
+        onPress={() => SignUp(email, password, userData)}
       >
         <Text style={styles.buttonText}>SignUp</Text>
       </TouchableOpacity>

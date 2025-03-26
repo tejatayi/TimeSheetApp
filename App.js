@@ -74,23 +74,4 @@ export default function App() {
       {user ? <SignedInStack /> : <SignedOutStack />}
     </NavigationContainer>
   );
-
-  // return (
-  //   <GestureHandlerRootView style={{ flex: 1 }}>
-  //     <NavigationContainer>
-  //       <Stack.Navigator initialRouteName="LoginPage">
-  //         <Stack.Screen
-  //           name="LoginPage"
-  //           component={LoginPage}
-  //           options={{ headerShown: false }}
-  //         />
-  //         <Stack.Screen
-  //           name="SignupPage"
-  //           component={SignupPage}
-  //           options={{ headerShown: false }}
-  //         />
-  //       </Stack.Navigator>
-  //     </NavigationContainer>
-  //   </GestureHandlerRootView>
-  // );
 }
