@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet } from "react-native";
 import { signOut } from "firebase/auth";
 import { auth } from "./FirebaseAuth"; // Adjust import based on your Firebase setup
 
-export default function Page1({ navigation }) {
+export default function AdminHomePage({ navigation }) {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -16,7 +16,7 @@ export default function Page1({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Page1!</Text>
+      <Text style={styles.title}>Welcome to Admin HomePage!</Text>
       <Button title="Sign Out" onPress={handleSignOut} />
     </View>
   );

@@ -40,7 +40,17 @@ export default function LoginPage({ navigation }) {
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => SignIn(email, password)}
+            onPress={async () => {
+              const role = await SignIn(email, password);
+              console.log("Role : ", role);
+              if (role === "ADMIN") {
+                navigation.navigate("AdminHomePage");
+              } else if (role === "USER") {
+                navigation.navigate("UserHomePage");
+              } else {
+                alert("User Not Found");
+              }
+            }}
           >
             <Text style={styles.buttonText}>Signin</Text>
           </TouchableOpacity>

@@ -14,9 +14,10 @@ import {
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import { useState, useEffect } from "react";
-import Page1 from "./pages/Page1";
+import UserHomePage from "./pages/UserHomePage";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./pages/FirebaseAuth";
+import AdminHomePage from "./pages/AdminHomePage";
 
 const AuthStackNavigator = createNativeStackNavigator();
 
@@ -42,8 +43,13 @@ function SignedInStack() {
   return (
     <AppStackNavigator.Navigator>
       <AppStackNavigator.Screen
-        name="firstpage"
-        component={Page1}
+        name="UserHomePage"
+        component={UserHomePage}
+        options={{ headerShown: false }}
+      />
+      <AppStackNavigator.Screen
+        name="AdminHomePage"
+        component={AdminHomePage}
         options={{ headerShown: false }}
       />
     </AppStackNavigator.Navigator>

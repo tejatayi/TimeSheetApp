@@ -22,6 +22,8 @@ apiClient.interceptors.request.use(async (config) => {
 });
 
 ////------------------------------------------------------------------
+
+////----------API creates new user with the user Data --------------
 export const createUser = async (userData) => {
   try {
     console.log("User Data set : ", userData);
@@ -29,7 +31,22 @@ export const createUser = async (userData) => {
     console.log(response.data);
     return response.data; // Returns the created user data from the backend.
   } catch (error) {
-    console.error("Error creating user:", error);
+    console.error("Error creating user: ", error);
+    throw error;
+  }
+};
+
+////--------------- API to get user role ---------------------
+
+export const getUserRole = async (email) => {
+  const requestBody = {
+    email: email,
+  };
+  try {
+    const response = await apiClient.post("/users/get-role", requestBody);
+    return response;
+  } catch (error) {
+    console.error("Error fetching user role: ", error);
     throw error;
   }
 };

@@ -5,7 +5,7 @@ import {
   getAuth,
 } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createUser } from "./API_hub";
+import { createUser, getUserRole } from "./API_hub";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCuPIRZbE4wb9W7qpj_LmgL8sLG4-fyras",
@@ -29,7 +29,11 @@ export async function SignIn(email, password) {
     );
     const user = userCredential.user;
     const token = await user.getIdToken();
+    console.log("This is TokenID : ", token);
     await AsyncStorage.setItem("firebase_token", token);
+    const response = await getUserRole(email);
+    const role = response.data.role;
+    return role;
   } catch (error) {
     console.error("Failed SignIn", error.message);
   }
@@ -46,7 +50,7 @@ export async function SignUp(email, password, userData) {
     const token = await user.getIdToken();
     console.log("entered furebase auth page having token :", token);
     await AsyncStorage.setItem("firebase_token", token);
-    createUser(userData);
+    createUser(userData); // API function call
   } catch (error) {
     console.error("Failed Creating User", error.message);
   }
